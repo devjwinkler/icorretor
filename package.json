@@ -1,0 +1,23 @@
+{
+  "name": "icorretor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plataforma imobiliária com vitrine pública e painel administrativo.",
+  "engines": {
+    "node": ">=22 <27"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev --workspace=@icorretor/api\" \"npm run dev --workspace=@icorretor/web\"",
+    "dev:api": "npm run dev --workspace=@icorretor/api",
+    "dev:web": "npm run dev --workspace=@icorretor/web",
+    "build": "npm run build --workspace=@icorretor/api && npm run build --workspace=@icorretor/web",
+    "typecheck": "npm run typecheck --workspace=@icorretor/api && npm run typecheck --workspace=@icorretor/web",
+    "start": "npm run start --workspace=@icorretor/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
